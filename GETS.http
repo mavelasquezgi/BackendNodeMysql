@@ -1,0 +1,5 @@
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjE4NzkwNTI5LCJleHAiOjE2MTg5NjMzMjksImF1ZCI6IjEiLCJpc3MiOiJvbm5ld3MuY29tLmNvIn0.2nab20P85YwnI05Gdu9I2F9eCWqlWeuRAn5-3e7S26Y
+
+###
+GET http://localhost:3500/api
+Authorization: Bearer {{token}}
