@@ -35,60 +35,9 @@ Content-Type: application/json
     "newPassword": "12345"
 }
 
-### 
-GET http://localhost:3500/api/departments
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-### 
-GET http://localhost:3500/api/department/5
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-###
-POST http://localhost:3500/api/createDepartment
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-{
-	"idDepartment":123,
-    "nameDepartment": "testDepartment"
-}
-
-###
-POST http://localhost:3500/api/createCity
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-{
-	"idMunicipio":123,
-    "nameMunicipio": "testMunicipio5",
-    "idDepartment":13
-}
-
-###
-POST http://localhost:3500/api/createAddress
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-{
-	"idMunicipio":300,
-    "neighborhood": "neighText",
-    "direction": "testDirection2"
-}
 
 ### 
 GET http://localhost:3500/api/cities
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-### 
-GET http://localhost:3500/api/faculties
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-### 
-GET http://localhost:3500/api/programs
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -98,45 +47,30 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 ### 
 
-GET http://localhost:3500/api/headquarters
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-### 
-GET http://localhost:3500/api/citiesByDepartment/91
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-### 
-GET http://localhost:3500/api/facultiesByHeadquarters/5
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-
-### 
-GET http://localhost:3500/api/programsByFaculties/1/5
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-###
-POST http://localhost:3500/api/createFaculty
+###  create category
+POST http://localhost:3500/api/createcategory
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-	"nameFacultad":"minas"
+	"prod_name":"test1",
+    "prod_descrip":"test1",
+    "prod_category":"",
+    "prod_price":"",
+    "prod_wheigth":"",
+    "prod_wheigth":""
 }
 
-###  
-GET http://localhost:3500/api/actas
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
 ###  aun no creada 
-POST http://localhost:3500/api/createActa
+POST http://localhost:3500/api/createproduct
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-	"acta_id":""
+	"prod_name":"test1",
+    "prod_descrip":"test1",
+    "prod_category":"",
+    "prod_price":"",
+    "prod_wheigth":"",
+    "prod_wheigth":""
 }

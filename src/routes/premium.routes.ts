@@ -5,6 +5,7 @@ import { academicControllers } from '../controllers/academic.controllers';
 import { checkIsInRole } from '../middlewares/passport';
 import { Role } from '../models/role';
 import { petitionsControllers } from '../controllers/petitions.controllers';
+import { productControllers } from '../controllers/product.controlers';
 
 class PremiumRoutes {
 
@@ -33,6 +34,8 @@ class PremiumRoutes {
         this.router.get('/headquarters', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),academicControllers.headquarters); 
         // routes petitions
         this.router.get('/actas', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),petitionsControllers.actasAll); 
+        // routes products
+        this.router.post('/createproduct', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),productControllers.createProduct); 
     }
 }
 
