@@ -1,4 +1,4 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjIxNzA3NDg1LCJleHAiOjE2MjE4ODAyODUsImF1ZCI6IjEiLCJpc3MiOiJvbm5ld3MuY29tLmNvIn0.BpW7uben3eGY8juDS1lnWmtNe12bWZnr9jmrzyXlmqw
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjQzMzg3MjgzLCJleHAiOjE2NDM1NjAwODMsImF1ZCI6IjEiLCJpc3MiOiJvbm5ld3MuY29tLmNvIn0.YYFhqC30rp3DKpvX5xXLbOcbRUmt7g8zcBMFY_3ZQ7w
 //@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmOTRjYzkyNmZlN2E0YzQ5ZjNmNmMwMiIsImlhdCI6MTYxMjY2MzA5NywiZXhwIjoxNjEyODM1ODk3LCJhdWQiOiI1Zjk0Y2M5MjZmZTdhNGM0OWYzZjZjMDIiLCJpc3MiOiJvbm5ld3MuY29tLmNvIn0.3VGaIEMO3n-A8XOnEDxGtabLE3S77pbPGahNT_D1tPs
 
 ###
@@ -6,9 +6,9 @@ POST http://localhost:3500/api/signin
 Content-Type: application/json
 
 {
-	"username":"User",
-    "password": "12345",
-    "role": ["Official"]
+	"username":"Admin",
+    "password": "AdminStore123*",
+    "role": ["Admin"]
 }
 
 
@@ -17,12 +17,12 @@ POST http://localhost:3500/api/signup
 Content-Type: application/json
 
 {
-	"username": "User",
-    "password": "12345",
-    "password2": "12345",
+	"username": "Admin",
+    "password": "AdminStore123*",
+    "password2": "AdminStore123*",
     "fullname": "Username",
     "email": "mavelasquezgi@unal.edu.co",
-    "role": "Official" 
+    "role": "Admin" 
 }
 
 ###
@@ -35,6 +35,72 @@ Content-Type: application/json
     "newPassword": "12345"
 }
 
+###  create category
+POST http://localhost:3500/api/createcategory
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"name":"test2",
+    "descrip":"test2"
+}
+
+###  update category
+POST http://localhost:3500/api/updatecategory
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"id":3,
+    "name":"test4",
+    "descrip":"test4"
+}
+
+###  get categories
+GET http://localhost:3500/api/categories
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###  get category
+GET http://localhost:3500/api/category/test2
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###  create product 
+POST http://localhost:3500/api/createproduct
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"name":"test1",
+    "descrip":"test1",
+    "category":"1",
+    "price":"212",
+    "wheigth":"123",
+    "image": "path"
+}
+
+###  update product 
+POST http://localhost:3500/api/updateproduct
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"id": 2,
+    "name":"testUpdat",
+    "descrip":"testUpdat",
+    "category":"1",
+    "price":"212",
+    "wheigth":"123",
+    "image": "path"
+}
+
+###  get categories
+GET http://localhost:3500/api/allproducts
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+// no routes proyect
 
 ### 
 GET http://localhost:3500/api/cities
@@ -46,31 +112,3 @@ GET http://localhost:3500/api/allAddress
 Authorization: Bearer {{token}}
 Content-Type: application/json
 ### 
-
-###  create category
-POST http://localhost:3500/api/createcategory
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-{
-	"prod_name":"test1",
-    "prod_descrip":"test1",
-    "prod_category":"",
-    "prod_price":"",
-    "prod_wheigth":"",
-    "prod_wheigth":""
-}
-
-###  aun no creada 
-POST http://localhost:3500/api/createproduct
-Authorization: Bearer {{token}}
-Content-Type: application/json
-
-{
-	"prod_name":"test1",
-    "prod_descrip":"test1",
-    "prod_category":"",
-    "prod_price":"",
-    "prod_wheigth":"",
-    "prod_wheigth":""
-}

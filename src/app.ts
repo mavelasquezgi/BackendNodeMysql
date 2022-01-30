@@ -7,6 +7,7 @@ import passportMiddleware from './middlewares/passport'
 import premiumRoutes from './routes/premium.routes'
 import { errorHandler } from './helpers/errorHandler'
 
+
 // initializations
 const app = express();
 
