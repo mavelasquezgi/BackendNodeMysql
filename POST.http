@@ -1,4 +1,4 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjQzMzg3MjgzLCJleHAiOjE2NDM1NjAwODMsImF1ZCI6IjEiLCJpc3MiOiJvbm5ld3MuY29tLmNvIn0.YYFhqC30rp3DKpvX5xXLbOcbRUmt7g8zcBMFY_3ZQ7w
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjQzNTc0MTQ0LCJleHAiOjE2NDM3NDY5NDQsImF1ZCI6IjEiLCJpc3MiOiJvbm5ld3MuY29tLmNvIn0.U9N2LWwItz7ocChQ-UU2TRBDxAvdKaVnmZkV6ih57zo
 //@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmOTRjYzkyNmZlN2E0YzQ5ZjNmNmMwMiIsImlhdCI6MTYxMjY2MzA5NywiZXhwIjoxNjEyODM1ODk3LCJhdWQiOiI1Zjk0Y2M5MjZmZTdhNGM0OWYzZjZjMDIiLCJpc3MiOiJvbm5ld3MuY29tLmNvIn0.3VGaIEMO3n-A8XOnEDxGtabLE3S77pbPGahNT_D1tPs
 
 ###
@@ -41,8 +41,8 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-	"name":"test2",
-    "descrip":"test2"
+	"name":"Cuidado",
+    "descrip":"Cuidado"
 }
 
 ###  update category
@@ -62,7 +62,12 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###  get category
-GET http://localhost:3500/api/category/test2
+GET http://localhost:3500/api/category/concentrados
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###  delete category
+GET http://localhost:3500/api/delcategory/test4
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -92,11 +97,21 @@ Content-Type: application/json
     "category":"1",
     "price":"212",
     "wheigth":"123",
-    "image": "path"
+    "image": "/home/mauro/Documents/store/prodImages/82465c22-a717-4d51-b324-41edc2c0b5c2.png"
 }
 
-###  get categories
+###  get products
 GET http://localhost:3500/api/allproducts
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###  get product by id 
+GET http://localhost:3500/api/product/3
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+###  del product by id
+GET http://localhost:3500/api/delproduct/5
 Authorization: Bearer {{token}}
 Content-Type: application/json
 

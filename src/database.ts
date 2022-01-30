@@ -8,7 +8,7 @@ export async function connect() {
         user: config.DB.USER,
         database: config.DB.DATABASE,
         password: config.DB.PASSWORD,
-        connectionLimit: 100
+        connectionLimit: 1000
     });
     return connection;
 }

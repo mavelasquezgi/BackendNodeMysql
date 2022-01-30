@@ -116,10 +116,45 @@ class CategoryControllers {
             try {
                 const RESULTSEARCH: any = await CONN.query('SELECT * FROM category WHERE cat_name = ?',[NAME]);
                 console.log(RESULTSEARCH[0].length)
-                return res.status(200).send(RESULTSEARCH[0]); 
+                return res.status(200).send(RESULTSEARCH[0][0]); 
             } catch (err) {
                 console.log(err)
                 let msj = "Error en la consulta"
+                return res.status(400).json(msj);
+            }
+        } else {
+            let msj = "El contenido de uno de los campos no es válido"
+            return res.status(400).json(msj);
+        }
+    }
+
+    public async delcategory(req: Request, res: Response): Promise<Response> {
+        const CONN = await connect();
+        const NAME = req.params.name
+        let valid:boolean = true
+        try {
+            validStrField(NAME)
+        } catch (error) {
+            console.error(error);
+            valid = false
+        }
+        if (valid) {
+            try {
+                const RESULTSEARCH: any = await CONN.query('SELECT * FROM product WHERE prod_category = ?',[NAME]);
+                if (RESULTSEARCH) {
+                    let msj = `No se puede eliminar por integridad referencial`
+                    // use 401 by Unauthorized
+                    return res.status(401).json(msj)
+                }
+                const RESULTDEL: any = await CONN.query('DELETE FROM category WHERE cat_name = ?',[NAME]);
+                console.log(RESULTDEL[0].length)
+                let msj = `eliminado categoria ${NAME}`
+                return res.status(200).json(msj);
+            } catch (err) {
+                console.log(err);
+                console.log(err);
+                
+                let msj = "Error al eliminar";
                 return res.status(400).json(msj);
             }
         } else {

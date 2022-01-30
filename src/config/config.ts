@@ -5,15 +5,15 @@ export default {
     // config for database
     DB: {
         HOST: process.env.MSQL_HOST || 'localhost',
-        USER: process.env.MSQL_USER || 'sofia',
-        PASSWORD: process.env.PASSWORD || 'Sofia2021*',
-        DATABASE: process.env.DATABASE || 'sofia'
+        USER: process.env.MSQL_USER || 'store',
+        PASSWORD: process.env.PASSWORD || 'Store2022*',
+        DATABASE: process.env.DATABASE || 'store'
     },
     
     // enviroments variables for paths and save files
     PATH: {
         // if not use folder in project use this path
-        URL: process.env.URL_PRODUCT || '/home/mauro/Documents/store/prodImages'
+        URLIMAGES: process.env.URL_PRODUCT || '/home/mauro/Documents/store/prodImages'
     }
 
 }
