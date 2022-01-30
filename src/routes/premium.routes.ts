@@ -4,6 +4,7 @@ import { checkIsInRole } from '../middlewares/passport';
 import { Role } from '../models/role';
 import { productControllers } from '../controllers/product.controllers';
 import { categoryControllers } from '../controllers/category.controllers';
+import multer from '../libs/multer'
 
 class PremiumRoutes {
 
@@ -16,7 +17,7 @@ class PremiumRoutes {
     config(): void {
         // routes products 
         // post
-        this.router.post('/createproduct', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),productControllers.createProduct);
+        this.router.post('/createproduct', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),multer.single('image'),productControllers.createProduct);
         this.router.post('/updateproduct', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),productControllers.updateProduct);
         this.router.post('/createcategory', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),categoryControllers.createCategory);
         this.router.post('/updatecategory', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),categoryControllers.updateCategory); 

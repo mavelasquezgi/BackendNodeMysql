@@ -29,7 +29,9 @@ class ProductControllers {
         const CATEGORY = req.body.category
         const PRICE = req.body.price
         const WHEIGTH = req.body.wheigth
-        const IMAGE = req.body.image
+        const IMAGE = req.file?.path
+        console.log(IMAGE);
+        
 
         let valid:boolean = true
         try {
