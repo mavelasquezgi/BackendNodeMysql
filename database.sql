@@ -33,3 +33,12 @@ CREATE TABLE IF NOT EXISTS product (
     prod_image VARCHAR(250),
     CONSTRAINT fk_cat_prod FOREIGN KEY (prod_category) REFERENCES category(cat_id) ON DELETE NO ACTION
 )ENGINE = INNODB;
+
+CREATE TABLE IF NOT EXISTS  order (
+    order_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    order_user INT(11),
+    order_product INT(11),
+    order_date TIMESTAMP,
+    CONSTRAINT fk_user_order FOREIGN KEY (order_user) REFERENCES users(id) ON DELETE NO ACTION
+    CONSTRAINT fk_product_order FOREIGN KEY (order_product) REFERENCES product(prod_id) ON DELETE NO ACTION
+)ENGINE = INNODB;
