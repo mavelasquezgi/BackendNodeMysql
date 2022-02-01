@@ -55,7 +55,7 @@ class ProductControllers {
             prod_category: CATEGORY,
             prod_price: PRICE,
             prod_wheigth: WHEIGTH,
-            prod_image: IMAGE,
+            prod_image: IMAGE?.replace('/home/mauro/Documents/git/FrontentAngularMysql/src/',""),
         }
         console.log(NEWPRODUCT);
         
@@ -82,10 +82,7 @@ class ProductControllers {
         const DESCRIP = req.body.descrip
         const CATEGORY = parseInt(req.body.category)
         const PRICE = req.body.price
-        const WHEIGTH = req.body.wheigth
-        const IMAGE = req.body.image
-        console.log(req.body.id);
-        
+        const WHEIGTH = req.body.wheigth        
 
         let valid:boolean = true
         try {
@@ -105,8 +102,7 @@ class ProductControllers {
             prod_descrip: DESCRIP,
             prod_category: CATEGORY,
             prod_price: PRICE,
-            prod_wheigth: WHEIGTH,
-            prod_image: IMAGE,
+            prod_wheigth: WHEIGTH
         }
         if (valid) {
             try {
@@ -154,6 +150,8 @@ class ProductControllers {
 
     public async delproduct(req: Request, res: Response): Promise <Response> {
         const CONN = await connect()
+        console.log(req.params.id);
+        
         try {
             const RESULT: any = await CONN.query('SELECT * FROM product WHERE prod_id = ?',[req.params.id])
             //console.log(RESULT[0]);

@@ -13,7 +13,7 @@ export default {
     // enviroments variables for paths and save files
     PATH: {
         // if not use folder in project use this path
-        URLIMAGES: process.env.URL_PRODUCT || '/home/mauro/Documents/store/prodImages'
+        URLIMAGES: process.env.URL_PRODUCT || '/home/mauro/Documents/git/FrontentAngularMysql/src/assets'
     }
 
 }

@@ -106,12 +106,12 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###  get product by id 
-GET http://localhost:3500/api/product/3
+GET http://localhost:3500/api/product/4
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###  del product by id
-GET http://localhost:3500/api/delproduct/5
+GET http://localhost:3500/api/delproduct/4
 Authorization: Bearer {{token}}
 Content-Type: application/json
 

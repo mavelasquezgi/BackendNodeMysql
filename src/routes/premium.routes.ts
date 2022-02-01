@@ -18,7 +18,7 @@ class PremiumRoutes {
         // routes products 
         // post
         this.router.post('/createproduct', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),multer.single('image'),productControllers.createProduct);
-        this.router.post('/updateproduct', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),multer.single('image'),productControllers.updateProduct);
+        this.router.post('/updateproduct', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),productControllers.updateProduct);
         this.router.post('/createcategory', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),categoryControllers.createCategory);
         this.router.post('/updatecategory', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),categoryControllers.updateCategory); 
         // get
