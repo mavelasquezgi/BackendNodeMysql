@@ -82,7 +82,10 @@ class ProductControllers {
         const DESCRIP = req.body.descrip
         const CATEGORY = parseInt(req.body.category)
         const PRICE = req.body.price
-        const WHEIGTH = req.body.wheigth        
+        const WHEIGTH = parseInt(req.body.wheigth) 
+        //const IMAGE = req.file?.path      
+
+        console.log("input body\n",req.body)
 
         let valid:boolean = true
         try {
@@ -102,7 +105,8 @@ class ProductControllers {
             prod_descrip: DESCRIP,
             prod_category: CATEGORY,
             prod_price: PRICE,
-            prod_wheigth: WHEIGTH
+            prod_wheigth: WHEIGTH,
+            //prod_image: IMAGE
         }
         if (valid) {
             try {
@@ -157,7 +161,7 @@ class ProductControllers {
             //console.log(RESULT[0]);
             if (RESULT[0]) {
                 //console.log(RESULT[0][0].prod_image);
-                await fs.unlink(path.resolve(RESULT[0][0].prod_image))
+                await fs.unlink(path.resolve(RESULT[0][0].prod_image)?.replace('BackendNodeMysql',"FrontentAngularMysql/src"))
                 const RESULTDEL: any = await CONN.query('DELETE FROM product WHERE prod_id = ?',[req.params.id])
             } 
             let msj = `eliminado producto con id ${req.params.id}`
