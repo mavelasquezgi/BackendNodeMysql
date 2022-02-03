@@ -1,4 +1,4 @@
-@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjQzNTc0MTQ0LCJleHAiOjE2NDM3NDY5NDQsImF1ZCI6IjEiLCJpc3MiOiJvbm5ld3MuY29tLmNvIn0.U9N2LWwItz7ocChQ-UU2TRBDxAvdKaVnmZkV6ih57zo
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiaWF0IjoxNjQzODU1NjYyLCJleHAiOjE2NDQwMjg0NjIsImF1ZCI6IjEiLCJpc3MiOiJvbm5ld3MuY29tLmNvIn0.wCIY1hVNoEMxTJ2iZSbHVR9e6WZresQl9dBF3Xmejjk
 //@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjVmOTRjYzkyNmZlN2E0YzQ5ZjNmNmMwMiIsImlhdCI6MTYxMjY2MzA5NywiZXhwIjoxNjEyODM1ODk3LCJhdWQiOiI1Zjk0Y2M5MjZmZTdhNGM0OWYzZjZjMDIiLCJpc3MiOiJvbm5ld3MuY29tLmNvIn0.3VGaIEMO3n-A8XOnEDxGtabLE3S77pbPGahNT_D1tPs
 
 ###
@@ -41,8 +41,8 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-	"name":"Cuidado",
-    "descrip":"Cuidado"
+	"name":"Entretenimiento",
+    "descrip":"Entretenimiento"
 }
 
 ###  update category
@@ -62,7 +62,7 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 ###  get category
-GET http://localhost:3500/api/category/concentrados
+GET http://localhost:3500/api/category/Alimento
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -115,15 +115,23 @@ GET http://localhost:3500/api/delproduct/4
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
-// no routes proyect
-
-### 
-GET http://localhost:3500/api/cities
+###  create order 
+POST http://localhost:3500/api/createorder
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
-### 
-GET http://localhost:3500/api/allAddress
+{
+	"user":1,
+    "product":2,
+    "units":2
+}
+
+###  del order by id
+GET http://localhost:3500/api/delorder/1
 Authorization: Bearer {{token}}
 Content-Type: application/json
-### 
+
+###  get all orders
+GET http://localhost:3500/api/orders
+Authorization: Bearer {{token}}
+Content-Type: application/json

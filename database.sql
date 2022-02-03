@@ -38,6 +38,7 @@ CREATE TABLE IF NOT EXISTS orderStore (
     orderSt_id INT(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
     orderSt_user INT(11),
     orderSt_product INT(11),
+    orderSt_units INT(11),
     orderSt_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_user_order FOREIGN KEY (orderSt_user) REFERENCES users(id) ON DELETE NO ACTION,
     CONSTRAINT fk_product_order FOREIGN KEY (orderSt_product) REFERENCES product(prod_id) ON DELETE NO ACTION

@@ -5,6 +5,7 @@ import { Role } from '../models/role';
 import { productControllers } from '../controllers/product.controllers';
 import { categoryControllers } from '../controllers/category.controllers';
 import multer from '../libs/multer'
+import { orderControllers } from '../controllers/orders.controllers';
 
 class PremiumRoutes {
 
@@ -20,6 +21,7 @@ class PremiumRoutes {
         this.router.post('/createproduct', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),multer.single('image'),productControllers.createProduct);
         this.router.post('/updateproduct', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),multer.single('image'),productControllers.updateProduct);
         this.router.post('/createcategory', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),categoryControllers.createCategory);
+        this.router.post('/createorder', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),orderControllers.createOrder);
         this.router.post('/updatecategory', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),categoryControllers.updateCategory); 
         // get
         this.router.get('/categories', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),categoryControllers.categories);
@@ -28,6 +30,8 @@ class PremiumRoutes {
         this.router.get('/allproducts', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),productControllers.allproducts);
         this.router.get('/product/:id', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),productControllers.getproduct);
         this.router.get('/delproduct/:id', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),productControllers.delproduct);
+        this.router.get('/delorder/:id', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),orderControllers.deleteOrder);
+        this.router.get('/orders', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),orderControllers.orders);
         
 
     }
