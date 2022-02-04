@@ -180,12 +180,13 @@ class ProductControllers {
 
         try {
             const RESULTSEARCH: any = await CONN.query('SELECT * FROM product');
-            console.log(RESULTSEARCH[0].length);
+            //console.log(RESULTSEARCH[0].length);
             addPDF(RESULTSEARCH[0]);
-            return res.status(200).send(RESULTSEARCH[0]); 
+            let msj = "POF creado exitosamente"
+            return res.status(200).json(msj);
         } catch (err) {
             console.log(err)
-            let msj = "Error en la consulta"
+            let msj = "Error al crear pdf"
             return res.status(400).json(msj);
         }   
     }

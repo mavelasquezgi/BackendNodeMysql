@@ -14,8 +14,8 @@ export default {
     PATH: {
         // if not use folder in project use this path
         URLIMAGES: process.env.URL_PRODUCT || '/home/mauro/Documents/git/FrontentAngularMysql/src/assets',
-        TEMP: process.env.URL_PRODUCT || '/home/mauro/Documents/git/FrontentAngularMysql/src/assets',
-        PDF: process.env.URL_PRODUCT || '/home/mauro/Documents/git/FrontentAngularMysql/src/assets'
+        TEMP: process.env.URL_PRODUCT || '/home/mauro/Documents/git/BackendNodeMysql/uploads',
+        PDF: process.env.URL_PRODUCT || '/home/mauro/Documents/git/BackendNodeMysql/uploads/pdf'
     }
 
 }

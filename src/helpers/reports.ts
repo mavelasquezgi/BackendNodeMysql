@@ -4,6 +4,7 @@ import mkdirp from "mkdirp";
 import config from "../config/config";
 
 export const addPDF = async (products:any): Promise<any> => {
+   
     return new Promise(async (resolve, reject) => {
         var fonts = {
             Roboto: {
@@ -13,24 +14,102 @@ export const addPDF = async (products:any): Promise<any> => {
                 bolditalics: `${config.PATH.TEMP}/fonts/Roboto-MediumItalic.ttf`
             }
         };
-        let content = [{
+
+        let content =[];
+
+        content.push(
+        {
             table: {
                 widths: [120, 120, 120, 120],
 
                 body: [
-                    [{ image: `${config.PATH.TEMP}/logounal.jpg`, width: 80, height: 80, alignment: 'center' }, { text: '\nACTA\n\n' + 'FACULTAD DE INGENIERÍA Y ARQUITECTURA\n' + 'UNIVERSIDAD NACIONAL DE COLOMBIA\n' + ' SEDE MANIZALES', colSpan: 2, alignment: 'center', bold: true, fontSize: 10, color: '# 181834', fillColor: '' }, {}, { image: `${config.PATH.TEMP}/images/logounal.jpg`, width: 80, height: 80, alignment: 'center' }]
+                    [{ image: `${config.PATH.TEMP}/logo-un.png`, width: 80, height: 80, alignment: 'center' }, { text: '\nSTORE\n\n' + 'FACULTAD DE ADMINISTRACIÓN\n' + 'UNIVERSIDAD NACIONAL DE COLOMBIA\n' + ' SEDE MANIZALES', colSpan: 2, alignment: 'center', bold: true, fontSize: 10, color: '# 181834', fillColor: '' }, {}, { image: `${config.PATH.TEMP}/logo-un.png`, width: 80, height: 80, alignment: 'center' }]
                 ]
 
                 }, layout: 'noBorders'
+        },
+        '\n',
+        {
+            style: 'tableExample',
+            color: '#333',
+            table: {
+                widths: [96, 96, 96, 96, 53, 53],
+
+                body: [
+                    [{ text: 'INFORMACIÓN PRODUCTOS', fontSize: 11, bold: true, color: '# 181834', fillColor: '#DCDCDC', colSpan: 6, alignment: 'center' }, {}, {}, {}, {}, {}],
+                ]
             },
-            {}
-        ]
-        
+            layout: {
+                hLineWidth: function (i: any, node: any) {
+                    return (i === 0 || i === node.table.body.length) ? 1 : 1;
+                },
+                vLineWidth: function (i: any, node: any) {
+                    return (i === 0 || i === node.table.widths.length) ? 1 : 1;
+                },
+                hLineColor: function (i: any, node: any) {
+                    return (i === 0 || i === node.table.body.length) ? '#eeeeee' : '#eeeeee';
+                },
+                vLineColor: function (i: any, node: any) {
+                    return (i === 0 || i === node.table.widths.length) ? '#eeeeee' : '#eeeeee';
+                },
+                paddingLeft: function (i: any, node: any) { return 1; },
+                paddingRight: function (i: any, node: any) { return 1; },
+                paddingTop: function (i: any, node: any) { return 1; },
+                paddingBottom: function (i: any, node: any) { return 1; },
+            }
+        },
+        '\n');
+
+        let matriz = [];
+        matriz.push([{ text: `ID DEL PRODUCTO`, style: `tableHeader`, alignment: `center` }, { text: `NOMBRE DEL PRODUCTO`, style: `tableHeader`, alignment: `center` }, { text: `CATEGORIA`, style: `tableHeader`, alignment: `center` }]);
+        for (let i = 0; i < products.length; i ++) {
+            matriz.push(
+                [{ text: `${products[i].prod_id}`, style: `tableHeader1`, alignment: `left`},{ text: `${products[i].prod_name}`, style: `tableHeader1`, alignment: `left` },{ text: `${products[i].prod_category}`, style: `tableHeader1`, alignment: `left` }]
+        )
+        }
+        content.push(
+            {
+                style: 'tableExample',
+                color: '#333',
+                table: {
+                    widths: [160, 160, 90, 90],
+
+                    body: matriz
+                },
+
+
+                layout: {
+
+                    hLineWidth: function (i: any, node: any) {
+                        return (i === 0 || i === node.table.body.length) ? 1 : 1;
+                    },
+                    vLineWidth: function (i: any, node: any) {
+                        return (i === 0 || i === node.table.widths.length) ? 1 : 1;
+                    },
+                    hLineColor: function (i: any, node: any) {
+                        return (i === 0 || i === node.table.body.length) ? '#eeeeee' : '#eeeeee';
+                    },
+                    vLineColor: function (i: any, node: any) {
+                        return (i === 0 || i === node.table.widths.length) ? '#eeeeee' : '#eeeeee';
+                    },
+
+                    paddingLeft: function (i: any, node: any) { return 1; },
+                    paddingRight: function (i: any, node: any) { return 1; },
+                    paddingTop: function (i: any, node: any) { return 1; },
+                    paddingBottom: function (i: any, node: any) { return 1; },
+                }
+
+            },
+
+            '\n',
+        );
         var PdfPrinter = require('pdfmake');
         var printer = new PdfPrinter(fonts);
         var fs = require('fs');
+
+        // todo para agregar la marca de agua 
         var dd = {
-            watermark: { text: 'GESOFIA CLASIFICADO', color: 'blue', opacity: 0.04, bold: true, italics: false },
+            watermark: { text: 'STORE CLASIFICADO', color: 'blue', opacity: 0.04, bold: true, italics: false },
             /*
             footer: function (currentPage: any, pageCount: any) {
                 return {
@@ -89,7 +168,7 @@ export const addPDF = async (products:any): Promise<any> => {
         var pdfDoc = printer.createPdfKitDocument(dd);
         const ACTFOLDER = config.PATH.TEMP
         await mkdirp(ACTFOLDER).then(made => console.log(`made directories, starting with ${made}`))
-        pdfDoc.pipe(temp123 = fs.createWriteStream(`${config.PATH.TEMP}`));
+        pdfDoc.pipe(temp123 = fs.createWriteStream(`${config.PATH.PDF}/pdfTry.pdf`));
         pdfDoc.end();
         temp123.on('finish', async function () {
             // do send PDF file 
@@ -103,7 +182,3 @@ export const addPDF = async (products:any): Promise<any> => {
         });
     });
 }
-
-export const docDefinition = {
-
-} 
