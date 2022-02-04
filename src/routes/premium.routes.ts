@@ -32,7 +32,7 @@ class PremiumRoutes {
         this.router.get('/delproduct/:id', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),productControllers.delproduct);
         this.router.get('/delorder/:id', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),orderControllers.deleteOrder);
         this.router.get('/orders', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),orderControllers.orders);
-        
+        this.router.get('/productspdf', passport.authenticate('jwt', { session: false }), checkIsInRole(Role.Admin, Role.Official ),productControllers.createPdf);
 
     }
 }

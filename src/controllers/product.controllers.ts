@@ -3,6 +3,7 @@ import { connect } from '../database';
 import path from 'path';
 // intall with <npm i fs-extra> <npm i @types/fs-extra -D>
 import fs from 'fs-extra'
+import {addPDF} from '../helpers/reports'
 
 function validStrField (field: string) {
     let errors: string[] = ["find","select","drop","update","href","delete"]
@@ -171,6 +172,22 @@ class ProductControllers {
             let msj = `no se pudo eliminar producto con id ${req.params.id}`
             return res.status(400).json(msj)            
         }
+    }
+
+    public async createPdf(req: Request, res: Response): Promise <Response> {
+       
+        const CONN = await connect();
+
+        try {
+            const RESULTSEARCH: any = await CONN.query('SELECT * FROM product');
+            console.log(RESULTSEARCH[0].length);
+            addPDF(RESULTSEARCH[0]);
+            return res.status(200).send(RESULTSEARCH[0]); 
+        } catch (err) {
+            console.log(err)
+            let msj = "Error en la consulta"
+            return res.status(400).json(msj);
+        }   
     }
 }
 

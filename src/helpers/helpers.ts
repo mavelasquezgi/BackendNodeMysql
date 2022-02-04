@@ -1,4 +1,8 @@
 import bcrypt from 'bcrypt'
+// use pdfmake <npm i pdfmake --save>
+const PdfPrinter = require('pdfmake')
+const fs = require('fs')
+
 
 export const encryptPassword = async (password: string): Promise<string> => {
     const salt = await bcrypt.genSalt(10);
@@ -14,3 +18,7 @@ export const matchPassword = async (password: string, savedPassword: string): Pr
         return false;
     }
 };
+
+
+
+
