@@ -47,7 +47,7 @@ class UserController {
             return res.status(400).send({ msg: 'Usuario y contraseña son requeridos' });
         } else {
             const CONN = await connect();
-            const RESULT: any = await CONN.query('SELECT * FROM users WHERE username = ? AND role = ?', [req.body.username, req.body.role]);
+            const RESULT: any = await CONN.query('SELECT * FROM users WHERE username = ?', [req.body.username]);
             if (RESULT[0].length > 0) {
                 const USERString = JSON.stringify(RESULT[0]);
                 const USER = JSON.parse(USERString)[0];

@@ -26,6 +26,19 @@ Content-Type: application/json
 }
 
 ###
+POST http://localhost:3500/api/signup
+Content-Type: application/json
+
+{
+	"username": "Customer",
+    "password": "Customer123*",
+    "password2": "Customer123*",
+    "fullname": "Username",
+    "email": "Customer@unal.edu.co",
+    "role": "Customer" 
+}
+
+###
 POST http://localhost:3500/api/changepassword
 Authorization: Bearer {{token}}
 Content-Type: application/json
